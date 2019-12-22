@@ -13,7 +13,7 @@ const RepositoryResume = props => (
       {props.description}
     </Description>
     <Star>
-      <img src={StarIcon} />
+      <img alt='Estrelas' src={StarIcon} />
       <span>
         {props.stars}
       </span>

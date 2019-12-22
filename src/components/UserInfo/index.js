@@ -12,31 +12,31 @@ import { InfoList, InfoItem } from './styles'
 const UserInfo = props => (
   <InfoList>
     <InfoItem>
-      <img src={OrganizationIcon} />
+      <img alt='Organização' src={OrganizationIcon} />
       <span>
         {props.organization}
       </span>
     </InfoItem>
     <InfoItem>
-      <img src={LocationIcon} />
+      <img alt='Localização' src={LocationIcon} />
       <span>
         {props.location}
       </span>
     </InfoItem>
     <InfoItem>
-      <img src={StarIcon} />
+      <img alt='Avaliação' src={StarIcon} />
       <span>
         {props.stars}
       </span>
     </InfoItem>
     <InfoItem>
-      <img src={RepositoryIcon} />
+      <img alt='Repositórios' src={RepositoryIcon} />
       <span>
         {props.repositories}
       </span>
     </InfoItem>
     <InfoItem>
-      <img src={FollowersIcon} />
+      <img alt='Seguidores' src={FollowersIcon} />
       <span>
         {props.followers}
       </span>

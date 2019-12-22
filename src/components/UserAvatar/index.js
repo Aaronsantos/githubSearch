@@ -5,7 +5,7 @@ import { Container, FullName, UserName } from './styles'
 
 const UserAvatar = props => (
   <Container>
-    <img src={props.avatarUrl} />
+    <img alt={props.fullName} src={props.avatarUrl} />
     <FullName>{props.fullName}</FullName>
     <UserName>{props.userName}</UserName>
   </Container>
