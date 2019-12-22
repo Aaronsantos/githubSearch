@@ -1,9 +1,7 @@
 import axios from 'axios'
 
-const baseUrl = 'https://api.github.com/'
+const baseURL = 'https://api.github.com/'
 
-const headers = {}
-
-const instance = axios.create({ baseUrl, headers })
+const instance = axios.create({ baseURL })
 
 export default instance

@@ -6,7 +6,7 @@ import * as services from './services'
 
 import errorMessages from '../../../util/errorMessages'
 
-export function * searchUser ({ payload }) {
+function * searchUser ({ payload }) {
   try {
     const userResult = yield call(services.getUserByName, payload)
     if (userResult.length === 0) {
@@ -23,7 +23,7 @@ export function * searchUser ({ payload }) {
   }
 }
 
-export function * getUserRepos ({ payload }) {
+function * getUserRepos ({ payload }) {
   try {
     const repos = yield call(services.getUserRepos, payload)
     yield put(actions.getUserReposSuccess(repos))
@@ -33,11 +33,14 @@ export function * getUserRepos ({ payload }) {
 }
 
 function * watchSearchUser () {
-  yield takeLatest(types.SEARCH_USER, searchUser)
+  return yield takeLatest(types.SEARCH_USER, searchUser)
 }
 
-export default function * searchSagas () {
-  yield all([
-    watchSearchUser()
-  ])
+function * watchGetUserRepos () {
+  yield takeLatest(types.GET_USER_REPOS, getUserRepos)
 }
+
+export default all([
+  watchSearchUser(),
+  watchGetUserRepos()
+])

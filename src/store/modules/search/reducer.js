@@ -47,10 +47,10 @@ const reducer = (state = initialState, action) => {
     case GET_USER_REPOS:
       return ({
         ...state,
-        item: {
-          ...state.item,
+        result: {
+          ...state.result,
           repos: {
-            ...state.item.repos,
+            ...state.result.repos,
             loading: true
           }
         }
@@ -58,10 +58,10 @@ const reducer = (state = initialState, action) => {
     case GET_USER_REPOS_SUCCESS:
       return ({
         ...state,
-        item: {
-          ...state.item,
+        result: {
+          ...state.result,
           repos: {
-            ...state.item.repos,
+            ...state.result.repos,
             loading: false,
             list: action.payload
           }
@@ -70,10 +70,10 @@ const reducer = (state = initialState, action) => {
     case GET_USER_REPOS_FAILURE:
       return ({
         ...state,
-        item: {
-          ...state.item,
+        result: {
+          ...state.result,
           repos: {
-            ...state.item.repos,
+            ...state.result.repos,
             loading: false,
             error: action.payload
           }
