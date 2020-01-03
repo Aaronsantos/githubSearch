@@ -4,15 +4,15 @@ import {
   SEARCH_USER_FAILURE,
   GET_USER_REPOS,
   GET_USER_REPOS_SUCCESS,
-  GET_USER_REPOS_FAILURE
+  GET_USER_REPOS_FAILURE,
+  SET_USER_STARS_AMMOUNT
 } from './constants'
 
 const initialState = {
-  input: '',
   loading: false,
   error: null,
   result: {
-    item: null,
+    item: {},
     repos: {
       loading: false,
       list: [],
@@ -26,8 +26,8 @@ const reducer = (state = initialState, action) => {
     case SEARCH_USER:
       return ({
         ...state,
-        input: action.payload,
-        loading: true
+        loading: true,
+        error: null
       })
     case SEARCH_USER_SUCCESS:
       return ({
@@ -76,6 +76,17 @@ const reducer = (state = initialState, action) => {
             ...state.result.repos,
             loading: false,
             error: action.payload
+          }
+        }
+      })
+    case SET_USER_STARS_AMMOUNT:
+      return ({
+        ...state,
+        result: {
+          ...state.result,
+          item: {
+            ...state.result.item,
+            stars: action.payload
           }
         }
       })

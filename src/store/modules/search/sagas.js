@@ -9,13 +9,10 @@ import errorMessages from '../../../util/errorMessages'
 function * searchUser ({ payload }) {
   try {
     const userResult = yield call(services.getUserByName, payload)
-    if (userResult.length === 0) {
-      yield put(actions.searchUserFailure(errorMessages.userNotFound))
-    } else {
-      yield put(actions.searchUserSuccess(userResult))
-    }
+    yield put(actions.searchUserSuccess(userResult))
+    yield put(actions.getUserRepos(payload))
   } catch (error) {
-    if (error.response.code === 404) {
+    if (error.response.status === 404) {
       yield put(actions.searchUserFailure(errorMessages.userNotFound))
     } else {
       yield put(actions.searchUserFailure(errorMessages.commonError))
@@ -27,6 +24,13 @@ function * getUserRepos ({ payload }) {
   try {
     const repos = yield call(services.getUserRepos, payload)
     yield put(actions.getUserReposSuccess(repos))
+
+    const starsAmmount = repos.reduce(
+      (ammount, repo) => {
+        return ammount + repo.stargazers_count
+      }, 0)
+
+    yield put(actions.setUserStarsAmmount(starsAmmount))
   } catch (error) {
     yield put(actions.getUserReposFailure(errorMessages.commonError))
   }

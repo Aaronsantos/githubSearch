@@ -1,24 +1,38 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 
 import UserResume from '../../components/UserResume'
 import RepositoryList from '../../components/RepositoryList'
 import SearchHeader from '../../components/SearchHeader'
-import WithSearch from '../../components/WithSearchHoc'
+import Spinner from '../../components/Spinner'
+import ErrorMessage from '../../components/ErrorMessage'
+import useSearch from '../../hooks/useSearch'
 
 import { Container } from './styles'
 
 const SearchPage = props => {
   const {
+    search,
+    searchUser
+  } = useSearch()
+
+  const {
     result,
-    loading
-  } = props.search
+    loading,
+    error
+  } = search
 
   const {
     item,
     repos
   } = result
+
+  const { username } = props.match.params
+
+  useEffect(() => {
+    searchUser(username)
+  }, [username])
 
   return (
     <>
@@ -26,21 +40,24 @@ const SearchPage = props => {
       <Container>
         {
           loading
-            ? 'Carregando'
-            : (
-              <>
-                <UserResume
-                  avatarUrl={item && item.avatar_url}
-                  followers={item && item.followers}
-                  organization={item && item.company}
-                  fullName={item && item.name}
-                  userName={item && item.login}
-                  repositories={item && item.public_repos}
-                  location={item && item.location}
-                />
-                <RepositoryList repositoryList={repos.list} loading={repos.loading} />
-              </>
-            )
+            ? <Spinner />
+            : error
+              ? (<ErrorMessage text={error} />)
+              : (
+                <>
+                  <UserResume
+                    avatarUrl={item.avatar_url}
+                    followers={item.followers}
+                    organization={item.company}
+                    fullName={item.name}
+                    userName={item.login}
+                    repositories={item.public_repos}
+                    location={item.location}
+                    stars={item.stars}
+                  />
+                  <RepositoryList repositoryList={repos.list} loading={repos.loading} />
+                </>
+              )
         }
       </Container>
     </>
@@ -48,9 +65,7 @@ const SearchPage = props => {
 }
 
 SearchPage.propTypes = {
-  search: PropTypes.object,
-  searchUser: PropTypes.func,
   match: PropTypes.object
 }
 
-export default withRouter(WithSearch(SearchPage))
+export default withRouter(SearchPage)

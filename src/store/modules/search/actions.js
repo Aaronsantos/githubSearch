@@ -4,7 +4,8 @@ import {
   SEARCH_USER_FAILURE,
   GET_USER_REPOS,
   GET_USER_REPOS_SUCCESS,
-  GET_USER_REPOS_FAILURE
+  GET_USER_REPOS_FAILURE,
+  SET_USER_STARS_AMMOUNT
 } from './constants'
 
 export const searchUser = name => ({
@@ -35,4 +36,9 @@ export const getUserReposSuccess = data => ({
 export const getUserReposFailure = error => ({
   type: GET_USER_REPOS_FAILURE,
   payload: error
+})
+
+export const setUserStarsAmmount = ammount => ({
+  type: SET_USER_STARS_AMMOUNT,
+  payload: ammount
 })

@@ -4,11 +4,9 @@ import PropTypes from 'prop-types'
 import RepositoryResume from '../RepositoryResume'
 import { Container } from './styles'
 
-import data from './data.json'
-
 const RepositoryList = (props) => (
   <Container>
-    {data
+    {props.repositoryList
       .map(repo => (
         <li key={repo.id} >
           <RepositoryResume
