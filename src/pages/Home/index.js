@@ -1,7 +1,9 @@
 import React from 'react'
 
+import SearchHeader from '../../components/SearchHeader'
+
 const HomePage = props => (
-  <h1>Hello Github</h1>
+  <SearchHeader />
 )
 
 export default HomePage

@@ -7,7 +7,9 @@ import { Container } from './styles'
 const SearchInput = props => {
   const [value, setValue] = useState('')
 
-  const changeHandler = e => setValue(e.target.value)
+  const changeHandler = e => {
+    setValue(e.target.value)
+  }
   const submitHandler = e => {
     e.preventDefault()
     props.onSubmit(value)
@@ -23,7 +25,7 @@ const SearchInput = props => {
       />
       <button
         type='submit'
-        onClick={props.onSubmit}
+        onClick={submitHandler}
       >
         <img src={SearchIcon} alt='Pesquisar' />
       </button>

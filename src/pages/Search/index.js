@@ -36,7 +36,7 @@ const SearchPage = props => {
 
   return (
     <>
-      <SearchHeader rowlayout />
+      <SearchHeader rowLayout />
       <Container>
         {
           loading

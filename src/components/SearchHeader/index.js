@@ -12,7 +12,7 @@ const SearchHeader = props => {
   }
 
   return (
-    <Container rowLayout>
+    <Container rowLayout={props.rowLayout}>
       < img src={Logo} alt='GitHubSearch' />
       <SearchInput onSubmit={goSearch} />
     </Container>

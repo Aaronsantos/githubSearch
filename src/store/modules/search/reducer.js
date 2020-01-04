@@ -9,6 +9,7 @@ import {
 } from './constants'
 
 const initialState = {
+  input: '',
   loading: false,
   error: null,
   result: {
@@ -27,6 +28,7 @@ const reducer = (state = initialState, action) => {
       return ({
         ...state,
         loading: true,
+        input: action.payload,
         error: null
       })
     case SEARCH_USER_SUCCESS:
