@@ -37,6 +37,5 @@ describe('useSearch custom hook', () => {
     expect(dispatch).toBeCalledWith(searchUserAction('test'))
     getUserRepos('test')
     expect(dispatch).toBeCalledWith(getUserReposAction('test'))
-
   })
 })

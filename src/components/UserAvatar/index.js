@@ -13,7 +13,7 @@ const UserAvatar = props => (
 
 UserAvatar.propTypes = {
   avatarUrl: PropTypes.string.isRequired,
-  fullName: PropTypes.string.isRequired,
+  fullName: PropTypes.string,
   userName: PropTypes.string.isRequired
 }
 

@@ -38,13 +38,13 @@ const UserResume = props => {
 
 UserResume.propTypes = {
   avatarUrl: PropTypes.string.isRequired,
-  fullName: PropTypes.string.isRequired,
+  fullName: PropTypes.string,
   userName: PropTypes.string.isRequired,
   organization: PropTypes.string,
   location: PropTypes.string,
   stars: PropTypes.number,
   repositories: PropTypes.number,
-  followers: PropTypes.number,
+  followers: PropTypes.number
 }
 
 export default UserResume

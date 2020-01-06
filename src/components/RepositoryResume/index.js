@@ -22,9 +22,9 @@ const RepositoryResume = props => (
 )
 
 RepositoryResume.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  stars: PropTypes.number.isRequired
+  title: PropTypes.string,
+  description: PropTypes.string,
+  stars: PropTypes.number
 }
 
 export default RepositoryResume
