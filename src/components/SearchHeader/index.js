@@ -16,7 +16,7 @@ const SearchHeader = props => {
       rowLayout={props.rowLayout}
       data-testid='search-header-container'
     >
-      < img src={Logo} alt='GitHubSearch' />
+      < img src={Logo} alt='GitHubSearch' onClick={() => history.push('/')} />
       <SearchInput onSubmit={goSearch} value={props.value}/>
     </Container>
   )
