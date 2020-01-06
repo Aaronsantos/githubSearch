@@ -25,31 +25,31 @@ const UserInfo = props => (
     </InfoItem>
     <InfoItem>
       <img alt='Avaliação' src={StarIcon} />
-      <span>
-        {props.stars}
+      <span data-testid='user-count-data'>
+        {props.stars || 0}
       </span>
     </InfoItem>
     <InfoItem>
       <img alt='Repositórios' src={RepositoryIcon} />
-      <span>
-        {props.repositories}
+      <span data-testid='user-count-data'>
+        {props.repositories || 0}
       </span>
     </InfoItem>
     <InfoItem>
       <img alt='Seguidores' src={FollowersIcon} />
-      <span>
-        {props.followers}
+      <span data-testid='user-count-data'>
+        {props.followers || 0}
       </span>
     </InfoItem>
   </InfoList>
 )
 
 UserInfo.propTypes = {
-  organization: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired,
-  stars: PropTypes.number.isRequired,
-  repositories: PropTypes.number.isRequired,
-  followers: PropTypes.number.isRequired
+  organization: PropTypes.string,
+  location: PropTypes.string,
+  stars: PropTypes.number,
+  repositories: PropTypes.number,
+  followers: PropTypes.number
 }
 
 export default UserInfo

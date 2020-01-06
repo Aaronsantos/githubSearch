@@ -5,7 +5,7 @@ import { Container, Title, Description, Star } from './styles'
 import StarIcon from '../../assets/star icon.svg'
 
 const RepositoryResume = props => (
-  <Container >
+  <Container data-testid='repo-resume'>
     <Title>
       {props.title}
     </Title>

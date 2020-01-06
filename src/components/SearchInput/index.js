@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import SearchIcon from '../../assets/Search Icon.svg'
@@ -15,8 +15,17 @@ const SearchInput = props => {
     props.onSubmit(value)
   }
 
+  useEffect(() => {
+    if (props.value) {
+      setValue(props.value)
+    }
+  }, [])
+
   return (
-    <Container onSubmit={submitHandler} >
+    <Container
+      onSubmit={submitHandler}
+      data-testid='search-form'
+    >
       <input
         type='text'
         name='search'
@@ -33,7 +42,8 @@ const SearchInput = props => {
   )
 }
 SearchInput.propTypes = {
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
+  value: PropTypes.string
 }
 
 export default SearchInput

@@ -12,15 +12,19 @@ const SearchHeader = props => {
   }
 
   return (
-    <Container rowLayout={props.rowLayout}>
+    <Container
+      rowLayout={props.rowLayout}
+      data-testid='search-header-container'
+    >
       < img src={Logo} alt='GitHubSearch' />
-      <SearchInput onSubmit={goSearch} />
+      <SearchInput onSubmit={goSearch} value={props.value}/>
     </Container>
   )
 }
 
 SearchHeader.propTypes = {
-  rowLayout: PropTypes.bool
+  rowLayout: PropTypes.bool,
+  value: PropTypes.string
 }
 
 export default SearchHeader

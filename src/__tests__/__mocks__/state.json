@@ -1,0 +1,13 @@
+{
+  "input": "",
+  "loading": false,
+  "error": null,
+  "result": {
+    "item": {},
+    "repos": {
+      "loading": false,
+      "list": [],
+      "error": null
+    }
+  }
+}

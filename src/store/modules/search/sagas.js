@@ -6,7 +6,7 @@ import * as services from './services'
 
 import errorMessages from '../../../util/errorMessages'
 
-function * searchUser ({ payload }) {
+export function * searchUser ({ payload }) {
   try {
     const userResult = yield call(services.getUserByName, payload)
     yield put(actions.searchUserSuccess(userResult))
@@ -20,7 +20,7 @@ function * searchUser ({ payload }) {
   }
 }
 
-function * getUserRepos ({ payload }) {
+export function * getUserRepos ({ payload }) {
   try {
     const repos = yield call(services.getUserRepos, payload)
     yield put(actions.getUserReposSuccess(repos))
@@ -32,6 +32,7 @@ function * getUserRepos ({ payload }) {
 
     yield put(actions.setUserStarsAmmount(starsAmmount))
   } catch (error) {
+    console.error(error)
     yield put(actions.getUserReposFailure(errorMessages.commonError))
   }
 }

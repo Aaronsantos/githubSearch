@@ -8,7 +8,7 @@ import {
   SET_USER_STARS_AMMOUNT
 } from './constants'
 
-const initialState = {
+export const initialState = {
   input: '',
   loading: false,
   error: null,

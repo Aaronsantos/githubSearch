@@ -15,43 +15,36 @@ const UserResume = props => {
     organization,
     repositories,
     location,
-    followers,
-    loading
+    followers
   } = props
 
-  if (loading) {
-    return (<span>loading...</span>)
-  } else {
-    return (
-      <Container>
-        <UserAvatar
-          avatarUrl={avatarUrl}
-          fullName={fullName}
-          userName={userName}
-        />
-        <UserInfo
-          followers={followers}
-          location={location}
-          organization={organization}
-          stars={stars}
-          repositories={repositories}
-        />
-      </Container>
-    )
-  }
+  return (
+    <Container>
+      <UserAvatar
+        avatarUrl={avatarUrl}
+        fullName={fullName}
+        userName={userName}
+      />
+      <UserInfo
+        followers={followers}
+        location={location}
+        organization={organization}
+        stars={stars}
+        repositories={repositories}
+      />
+    </Container>
+  )
 }
 
 UserResume.propTypes = {
   avatarUrl: PropTypes.string.isRequired,
   fullName: PropTypes.string.isRequired,
   userName: PropTypes.string.isRequired,
-  organization: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired,
-  stars: PropTypes.number.isRequired,
-  repositories: PropTypes.number.isRequired,
-  followers: PropTypes.number.isRequired,
-  loading: PropTypes.bool
-
+  organization: PropTypes.string,
+  location: PropTypes.string,
+  stars: PropTypes.number,
+  repositories: PropTypes.number,
+  followers: PropTypes.number,
 }
 
 export default UserResume
